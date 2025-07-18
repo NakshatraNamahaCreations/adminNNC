@@ -1,0 +1,138 @@
+.form-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 2px #bee3f8;
+}
+
+.image-upload-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.image-upload {
+  flex: 1;
+}
+
+.image-preview {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  margin-top: 0.5rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+}
+
+.faq-section {
+  margin-top: 2rem;
+}
+
+.faq-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.faq-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.faq-inputs {
+  flex: 1;
+}
+
+.remove-btn {
+  background-color: #e53e3e;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #c53030;
+}
+
+.add-faq-btn {
+  background-color: #4a5568;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.add-faq-btn:hover {
+  background-color: #2d3748;
+}
+
+.form-submit {
+  padding-top: 1.5rem;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: #38a169;
+  color: white;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #2f855a;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

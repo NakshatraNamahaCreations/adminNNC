@@ -1,0 +1,100 @@
+.login-wrapper {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* background: linear-gradient(135deg, #6e00ff, #00f0ff); */
+  background-image: url("/back1.jpg"); /* path from public folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.login-container {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  margin-bottom: 150px;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 93%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #e8f0fe;
+  font-size: 14px;
+}
+
+.login-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #26abe1;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #26abe1;
+}
+
+.styled-image {
+  width: 150px; /* reduce width */
+  height: auto; /* maintain aspect ratio */
+  display: block;
+  margin: 0 auto 20px auto; /* center + bottom spacing */
+  border-radius: 8px; /* optional: rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  object-fit: cover;
+}
+
+/* Styling for the role dropdown */
+select.inputBox {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #e8f0fe;
+  font-size: 14px;
+  color: #333;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+}
+
+/* Optional: Add hover/focus styles */
+select.inputBox:focus {
+  border-color: #26abe1;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(38, 171, 225, 0.2);
+}

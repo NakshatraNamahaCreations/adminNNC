@@ -1,0 +1,117 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #1d2b53;
+  color: #ffffff;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.logo-wrapper {
+  text-align: center;
+  /* padding-bottom: 20px; */
+}
+/* Style the dropdown trigger (title) */
+.custom-nav-dropdown .nav-link {
+  color: #d1d1d1 !important;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+.sidebar-nav .dropdown-item {
+  text-decoration: none !important;
+}
+.sidebar-nav .nav-link {
+  text-decoration: none !important;
+}
+
+.custom-nav-dropdown {
+  position: relative;
+}
+.custom-nav-dropdown .dropdown-menu {
+  position: relative !important;
+  inset: auto !important;
+  margin-left: 20px;
+  background-color: #1d2b53;
+  border: none;
+  box-shadow: none;
+    display: flex !important;
+  flex-direction: column;
+}
+.custom-nav-dropdown .nav-link:hover,
+.custom-nav-dropdown .show > .nav-link {
+  background-color: #2d3a64 !important;
+  color: #ffffff !important;
+}
+
+/* Dropdown menu background */
+.custom-nav-dropdown .dropdown-menu {
+  background-color: #1d2b53;
+  border: none;
+    display: flex !important;
+  flex-direction: column;
+}
+
+.dropdown-menu[data-popper-placement] {
+  transform: none !important;
+  top: 100% !important;
+  left: 0 !important;
+}
+
+/* Style dropdown items */
+.custom-dropdown-item {
+  color: #d1d1d1;
+  padding: 8px 16px;
+}
+
+.custom-dropdown-item:hover {
+  background-color: #2d3a64;
+  color: white;
+}
+
+.logo {
+  width: 120px;
+  margin: 0 auto;
+}
+
+.sidebar-nav .nav-link {
+  color: #d1d1d1;
+  padding: 10px 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.sidebar-nav .nav-link.active,
+.sidebar-nav .nav-link:hover {
+  background-color: #2d3a64;
+  color: #ffffff;
+}
+
+.nav-heading {
+  padding: 8px 20px;
+  font-size: 12px;
+  color: #9da8c3;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.logout-section {
+  color: #ffffff;
+  padding: 15px 20px;
+  border-top: 1px solid #334170;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logout-section:hover {
+  background-color: #2d3a64;
+}

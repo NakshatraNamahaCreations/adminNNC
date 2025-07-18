@@ -1,0 +1,119 @@
+.blog-container {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.blog-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.add-blog-btn {
+  background-color: #4a5568;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.add-blog-btn:hover {
+  background-color: #2d3748;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  padding: 0.5rem 1rem;
+  width: 250px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+}
+
+.search-btn {
+  background-color: #f6ad55;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.loading-text {
+  text-align: center;
+  color: #718096;
+}
+
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+}
+
+.table-head {
+  background-color: #f7fafc;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.table-cell {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+.table-row:hover {
+  background-color: #f9fafb;
+}
+
+.blog-image {
+  width: 96px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4a5568;
+  transition: color 0.3s ease;
+}
+
+.edit-btn:hover {
+  color: #2d3748;
+}
+
+.delete-btn {
+  color: #e53e3e;
+}
+
+.delete-btn:hover {
+  color: #c53030;
+}
