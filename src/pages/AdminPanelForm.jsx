@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './AdminPanelForm.css';
 
 export default function AdminPanelForm() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
-    role: "", // Default to empty to enforce selection
   });
 
   const navigate = useNavigate();
@@ -14,35 +12,32 @@ export default function AdminPanelForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!formData.role) {
-      alert("❌ Please select a role");
-      return;
-    }
-
     try {
-      const res = await fetch("https://api.nakshatranamahacreations.in/api/users/login", {
+      const res = await fetch("https://api.nakshatranamahacreations.in/api/persons/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: formData.username,
+          email: formData.email,
           password: formData.password,
         }),
       });
 
       const result = await res.json();
 
-      if (res.ok) {
-        if (result.role === formData.role) {
-          alert("Login successful as " + result.role);
-          localStorage.setItem("token", result.token); // Store token for authenticated requests
-          navigate("/dashboard"); // Proceed to dashboard
-        } else {
-          alert("❌ You selected '" + formData.role + "', but your role is '" + result.role + "'");
-        }
+     if (res.ok) {
+  const { person } = result;
+  if (person.status) {
+    localStorage.setItem("token", result.token || "dummy-token");
+    localStorage.setItem("userRole", person.role); // ✅ Save role here
+    navigate("/dashboard");
+  } else {
+    alert("❌ Account is inactive");
+  }
+
       } else {
-        alert("❌ " + (result.error || "Invalid credentials"));
+        alert("❌ " + (result.message || "Invalid credentials"));
       }
     } catch (err) {
       console.error("Login error:", err);
@@ -57,7 +52,7 @@ export default function AdminPanelForm() {
     }));
   };
 
-    const inputStyle = {
+  const inputStyle = {
     width: "100%",
     padding: "12px",
     marginBottom: "20px",
@@ -69,55 +64,81 @@ export default function AdminPanelForm() {
   };
 
   return (
-    <div className="container login-wrapper">
-      <div className="row">
-        {/* <img src="image.webp" alt="Admin Banner" className="col-md-6 styled-image" /> */}
-
-        <div className="col-md-6 login-container">
-          <h2>Login</h2>
-          <form onSubmit={handleLogin}>
-            <label htmlFor="username">Username</label>
+    <div style={{
+      maxWidth: "1200px",
+      margin: "0 auto",
+      padding: "20px",
+      fontFamily: "Arial, sans-serif",
+    }}>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <div style={{ flex: "1 1 50%", minWidth: "300px", padding: "20px" }}>
+          <h2 style={{
+            fontSize: "28px",
+            fontWeight: "bold",
+            color: "#1a202c",
+            marginBottom: "20px",
+            textAlign: "center",
+          }}>
+            Login
+          </h2>
+          <form onSubmit={handleLogin} style={{ maxWidth: "400px", margin: "0 auto" }}>
+            <label htmlFor="email" style={{
+              display: "block",
+              fontSize: "14px",
+              fontWeight: "500",
+              color: "#2d3748",
+              marginBottom: "8px",
+            }}>
+              Email
+            </label>
             <input
-              className="inputBox"
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
-              placeholder="Username"
+              placeholder="Enter your email"
               required
               style={inputStyle}
             />
 
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" style={{
+              display: "block",
+              fontSize: "14px",
+              fontWeight: "500",
+              color: "#2d3748",
+              marginBottom: "8px",
+            }}>
+              Password
+            </label>
             <input
-              className="inputBox"
               type="password"
               id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Password"
+              placeholder="Enter your password"
               required
               style={inputStyle}
             />
 
-            <label htmlFor="role">Select Role</label>
-            <select
-              className="inputBox"
-              id="role"
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              required
-              style={inputStyle}
+            <button
+              type="submit"
+              style={{
+                width: "100%",
+                padding: "12px",
+                backgroundColor: "#3182ce",
+                color: "white",
+                border: "none",
+                borderRadius: "6px",
+                cursor: "pointer",
+                fontSize: "16px",
+                transition: "background-color 0.3s",
+                ":hover": { backgroundColor: "#2b6cb0" },
+              }}
             >
-              <option value="">-- Choose Role --</option>
-              <option value="admin">Admin</option>
-              <option value="employee">Employee</option>
-            </select>
-
-            <button type="submit" className="login-btn">Login</button>
+              Login
+            </button>
           </form>
         </div>
       </div>

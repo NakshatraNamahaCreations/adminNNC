@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BsGrid, BsPeople, BsBoxArrowRight } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
-
 
 export default function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPath = location.pathname;
-const navigate = useNavigate();
+  const userRole = localStorage.getItem('userRole'); // 'admin' or 'employee'
 
   const [activeTab, setActiveTab] = useState(
     currentPath.includes('enquiry') ? 'enquiry' :
@@ -86,86 +85,70 @@ const navigate = useNavigate();
         />
       </div>
 
-      <nav style={{
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-        padding: '0 10px'
-      }}>
-        <Link to="/dashboard" onClick={() => toggleTab('dashboard')} style={navItemStyle('dashboard')}>
-          <BsGrid style={{ marginRight: '8px', fontSize: '16px' }} />
-          Dashboard
+      <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 10px' }}>
+        {/* Blogs - visible to all */}
+        <Link to="/blogs" onClick={() => toggleTab('blogs')} style={navItemStyle('blogs')}>
+          <BsGrid style={{ marginRight: '8px' }} /> Blogs
         </Link>
 
-        <div>
-          <div 
-            onClick={() => toggleTab('enquiry')}
-            style={navItemStyle('enquiry')}
-          >
-            <BsGrid style={{ marginRight: '8px', fontSize: '16px' }} />
-            Enquiry
-          </div>
-          {activeTab === 'enquiry' && (
-            <div style={{
-              marginLeft: '20px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '6px',
-              padding: '8px 0'
-            }}>
-              <Link 
-                to="/bangloreenquiry"
-                onClick={() => handleSubItemClick('bangalore')}
-                style={subItemStyle('bangalore')}
-              >
-                Bengaluru
-              </Link>
-              <Link 
-                to="/mysoreenquiry"
-                onClick={() => handleSubItemClick('mysore')}
-                style={subItemStyle('mysore')}
-              >
-                Mysore
-              </Link>
+        {/* Admin Only Sections */}
+        {userRole === 'admin' && (
+          <>
+            <Link to="/dashboard" onClick={() => toggleTab('dashboard')} style={navItemStyle('dashboard')}>
+              <BsGrid style={{ marginRight: '8px' }} /> Dashboard
+            </Link>
+
+            <div>
+              <div onClick={() => toggleTab('enquiry')} style={navItemStyle('enquiry')}>
+                <BsGrid style={{ marginRight: '8px' }} />
+                Enquiry
+              </div>
+              {activeTab === 'enquiry' && (
+                <div style={{
+                  marginLeft: '20px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '6px'
+                }}>
+                  <Link to="/bangloreenquiry" onClick={() => handleSubItemClick('bangalore')} style={subItemStyle('bangalore')}>
+                    Bengaluru
+                  </Link>
+                  <Link to="/mysoreenquiry" onClick={() => handleSubItemClick('mysore')} style={subItemStyle('mysore')}>
+                    Mysore
+                  </Link>
+                </div>
+              )}
             </div>
-          )}
+
+            <Link to="/teams" onClick={() => toggleTab('teams')} style={navItemStyle('teams')}>
+              <BsPeople style={{ marginRight: '8px' }} /> Teams
+            </Link>
+          </>
+        )}
+
+        {/* Logout */}
+        <div
+          onClick={() => {
+            localStorage.removeItem("userRole");
+            localStorage.removeItem("token");
+            navigate("/");
+          }}
+          style={{
+            padding: '12px 15px',
+            borderTop: '1px solid rgba(255,255,255,0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            cursor: 'pointer',
+            color: '#e74c3c',
+            fontSize: '15px',
+            fontWeight: 500,
+            transition: 'all 0.2s ease'
+          }}
+        >
+          <BsBoxArrowRight style={{ marginRight: '8px', fontSize: '16px' }} />
+          Logout
         </div>
-
-        {/* <Link to="/blogs" onClick={() => toggleTab('blogs')} style={navItemStyle('blogs')}>
-          <BsGrid style={{ marginRight: '8px', fontSize: '16px' }} />
-          Blogs
-        </Link> */}
-
-        <Link to="/teams" onClick={() => toggleTab('teams')} style={navItemStyle('teams')}>
-          <BsPeople style={{ marginRight: '8px', fontSize: '16px' }} />
-          Teams
-        </Link>
-
-      <div
-  onClick={() => {
-    localStorage.removeItem("token");
-    navigate("/");
-  }}
-  style={{
-    padding: '12px 15px',
-    borderTop: '1px solid rgba(255,255,255,0.1)',
-    display: 'flex',
-    alignItems: 'center',
-    cursor: 'pointer',
-    color: '#e74c3c',
-    fontSize: '15px',
-    fontWeight: 500,
-    transition: 'all 0.2s ease'
-  }}
->
-  <BsBoxArrowRight style={{ marginRight: '8px', fontSize: '16px' }} />
-  Logout
-</div>
-
       </nav>
-
-      
     </div>
   );
 }

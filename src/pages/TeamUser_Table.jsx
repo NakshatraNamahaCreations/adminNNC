@@ -25,10 +25,7 @@ export default function TeamUser_Table() {
             <BsPersonCircle size={20} />
             <span>Admin</span>
           </div>
-          {/* <div className="topbar-item logout">
-            <BsBoxArrowRight size={20} />
-            <span>Logout</span>
-          </div> */}
+       
         </div>
 
         {/* Dashboard Content */}
