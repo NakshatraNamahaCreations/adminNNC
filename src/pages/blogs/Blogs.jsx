@@ -110,11 +110,11 @@ const Blogs = () => {
                     <td className="table-cell">{blog.title}</td>
                     <td className="table-cell">
                   <img
-    src={`https://api.nakshatranamahacreations.in/${blog.bannerImage}`} // Prepend base URL
-    alt={blog.title}
-    className="blog-image"
-    onError={(e) => console.error('Image failed to load:', e)} // Add error handling
-  />
+  src={`https://api.nakshatranamahacreations.in/uploads/${blog.bannerImage}`}
+  alt={blog.title}
+  className="blog-image"
+
+/>
                     </td>
                     <td className="table-cell">
                       {blog.description.replace(/<[^>]+>/g, "").slice(0, 80)}...
